@@ -1,6 +1,8 @@
 from collections.abc import Callable, Iterator
 from typing import Any, Generic, Never, Self, TypeVar as _TypeVar, overload
 
+from purity.utils import get_true_anno
+
 Number = _TypeVar("Number", int, float, complex)
 NumericTypes = int, float, complex
 
@@ -8,12 +10,6 @@ Domain = _TypeVar("Domain")
 Codomain = _TypeVar("Codomain")
 NumberDomain = _TypeVar("NumberDomain", int, float, complex)
 NumberCodomain = _TypeVar("NumberCodomain", int, float, complex)
-
-
-def get_true_anno(anno: type | str) -> type:
-    if isinstance(anno, type):
-        return anno
-    return eval(anno, globals())
 
 
 class TypeError(TypeError):
